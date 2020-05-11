@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from .models import BoardModel
 from django.contrib.auth.decorators import login_required
@@ -37,3 +37,7 @@ def loginfunc(request):
 def listfunc(request):
     object_list = BoardModel.objects.all()
     return render(request, 'list.html', {'object_list':object_list})
+
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
