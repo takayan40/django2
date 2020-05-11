@@ -15,7 +15,7 @@
 
 
     <div class="alert alert-success" role="alert">
-        <p>タイトル：{{item.title}}</p>
+        <p>タイトル：<a href="{% url 'detail' item.pk %}">{{item.title}}</a></p>
         <p>投稿者：{{item.author}}</p>
         <a href="#" class="btn btn-primary" role="button" aria-pressed="true">いいね</a>
         <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">既読</a>
