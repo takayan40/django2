@@ -48,6 +48,17 @@ def detailfunc(request, pk):
 
 def goodfunc(request, pk):
     post = BoardModel.objects.get(pk=pk)
-    post.good = post.good + 1
+    post.good =+ 1
     post.save()
     return redirect('list')
+
+def readfunc(request, pk):
+    post = BoardModel.objects.get(pk=pk)
+    post2 = request.user.get_username()
+    if(post2 in post.readtext):
+        return redirect('list')
+    else:
+        post.read =+ 1
+        post.readtext = post.readtext + ' ' + post2
+        post.save()
+        return redirect('list')
